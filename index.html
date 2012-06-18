@@ -1,0 +1,360 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Nodejs-youtube by fvdm</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Nodejs-youtube</h1>
+        <p>Access public YouTube data feeds from your Node.js apps</p>
+        <p class="view"><a href="https://github.com/fvdm/nodejs-youtube">View the Project on GitHub <small>fvdm/nodejs-youtube</small></a></p>
+        <ul>
+          <li><a href="https://github.com/fvdm/nodejs-youtube/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/fvdm/nodejs-youtube/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/fvdm/nodejs-youtube">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Installation</h2>
+
+<p><a href="http://travis-ci.org/fvdm/nodejs-youtube"><img src="https://secure.travis-ci.org/fvdm/nodejs-youtube.png?branch=master" alt="Build Status"></a></p>
+
+<pre><code>npm install youtube-feeds
+</code></pre>
+
+<h2>Usage</h2>
+
+<div class="highlight">
+<pre><span class="c1">// load the module</span>
+<span class="kd">var</span> <span class="nx">youtube</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'youtube-feeds'</span><span class="p">)</span>
+
+<span class="c1">// search parkour videos</span>
+<span class="nx">youtube</span><span class="p">.</span><span class="nx">feeds</span><span class="p">.</span><span class="nx">videos</span><span class="p">(</span> <span class="p">{</span><span class="nx">q</span><span class="o">:</span> <span class="s1">'parkour'</span><span class="p">},</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h1>Feeds</h1>
+
+<h2>feeds.videos</h2>
+
+<p><strong>( [vars,] callback )</strong></p>
+
+<p>Get a list of recently published or updated videos, or search them all, filter, sort, etc.</p>
+
+<p><a href="https://developers.google.com/youtube/2.0/developers_guide_protocol_api_query_parameters#Custom_parameters">API docs: custom query parameters</a></p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">feeds</span><span class="p">.</span><span class="nx">videos</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="nx">q</span><span class="o">:</span>              <span class="s1">'parkour'</span><span class="p">,</span>
+        <span class="s1">'max-results'</span><span class="o">:</span>  <span class="mi">2</span><span class="p">,</span>
+        <span class="nx">orderby</span><span class="o">:</span>        <span class="s1">'published'</span>
+    <span class="p">},</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span>
+<span class="p">)</span>
+</pre>
+</div>
+
+
+<p>Output:</p>
+
+<div class="highlight">
+<pre><span class="p">{</span> <span class="nx">updated</span><span class="o">:</span> <span class="s1">'2012-06-18T17:55:11.294Z'</span><span class="p">,</span>
+  <span class="nx">totalItems</span><span class="o">:</span> <span class="mi">6985</span><span class="p">,</span>
+  <span class="nx">startIndex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">itemsPerPage</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nx">items</span><span class="o">:</span> 
+   <span class="p">[</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">'WEeqHj3Nj2c'</span><span class="p">,</span>
+       <span class="nx">uploaded</span><span class="o">:</span> <span class="s1">'2006-06-08T01:17:06.000Z'</span><span class="p">,</span>
+       <span class="nx">updated</span><span class="o">:</span> <span class="s1">'2012-06-18T15:53:06.000Z'</span><span class="p">,</span>
+       <span class="nx">uploader</span><span class="o">:</span> <span class="s1">'sauloca'</span><span class="p">,</span>
+       <span class="nx">category</span><span class="o">:</span> <span class="s1">'Sports'</span><span class="p">,</span>
+       <span class="nx">title</span><span class="o">:</span> <span class="s1">'Parkour and FreeRunning'</span><span class="p">,</span>
+       <span class="nx">description</span><span class="o">:</span> <span class="s1">'Edited by: Saulo Sampson Chase [..]'</span><span class="p">,</span>
+       <span class="nx">tags</span><span class="o">:</span> 
+        <span class="p">[</span> <span class="s1">'le'</span><span class="p">,</span>
+          <span class="s1">'parkour'</span><span class="p">,</span>
+          <span class="s1">'free'</span><span class="p">,</span>
+          <span class="s1">'running'</span> <span class="p">],</span>
+       <span class="nx">thumbnail</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="nx">sqDefault</span><span class="o">:</span> <span class="s1">'http://i.ytimg.com/vi/WEeqHj3Nj2c/default.jpg'</span><span class="p">,</span>
+          <span class="nx">hqDefault</span><span class="o">:</span> <span class="s1">'http://i.ytimg.com/vi/WEeqHj3Nj2c/hqdefault.jpg'</span> <span class="p">},</span>
+       <span class="nx">player</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="k">default</span><span class="o">:</span> <span class="s1">'https://www.youtube.com/watch?v=WEeqHj3Nj2c&amp;feature=youtube_gdata_player'</span><span class="p">,</span>
+          <span class="nx">mobile</span><span class="o">:</span> <span class="s1">'https://m.youtube.com/details?v=WEeqHj3Nj2c'</span> <span class="p">},</span>
+       <span class="nx">content</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="s1">'1'</span><span class="o">:</span> <span class="s1">'rtsp://v8.cache8.c.youtube.com/CiILENy73wIaGQlnj809HqpHWBMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp'</span><span class="p">,</span>
+          <span class="s1">'5'</span><span class="o">:</span> <span class="s1">'https://www.youtube.com/v/WEeqHj3Nj2c?version=3&amp;f=videos&amp;app=youtube_gdata'</span><span class="p">,</span>
+          <span class="s1">'6'</span><span class="o">:</span> <span class="s1">'rtsp://v8.cache8.c.youtube.com/CiILENy73wIaGQlnj809HqpHWBMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp'</span> <span class="p">},</span>
+       <span class="nx">duration</span><span class="o">:</span> <span class="mi">218</span><span class="p">,</span>
+       <span class="nx">geoCoordinates</span><span class="o">:</span> <span class="p">{</span> <span class="nx">latitude</span><span class="o">:</span> <span class="o">-</span><span class="mf">7.100892543792725</span><span class="p">,</span> <span class="nx">longitude</span><span class="o">:</span> <span class="o">-</span><span class="mf">34.91455078125</span> <span class="p">},</span>
+       <span class="nx">rating</span><span class="o">:</span> <span class="mf">4.862864</span><span class="p">,</span>
+       <span class="nx">likeCount</span><span class="o">:</span> <span class="s1">'85314'</span><span class="p">,</span>
+       <span class="nx">ratingCount</span><span class="o">:</span> <span class="mi">88343</span><span class="p">,</span>
+       <span class="nx">viewCount</span><span class="o">:</span> <span class="mi">32718590</span><span class="p">,</span>
+       <span class="nx">favoriteCount</span><span class="o">:</span> <span class="mi">99541</span><span class="p">,</span>
+       <span class="nx">accessControl</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="nx">comment</span><span class="o">:</span> <span class="s1">'denied'</span><span class="p">,</span>
+          <span class="nx">commentVote</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">videoRespond</span><span class="o">:</span> <span class="s1">'moderated'</span><span class="p">,</span>
+          <span class="nx">rate</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">embed</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">list</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">autoPlay</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">syndicate</span><span class="o">:</span> <span class="s1">'allowed'</span> <span class="p">}</span> <span class="p">},</span>
+     <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">'cNvJy0zoXOY'</span><span class="p">,</span>
+       <span class="nx">uploaded</span><span class="o">:</span> <span class="s1">'2010-05-01T02:21:25.000Z'</span><span class="p">,</span>
+       <span class="nx">updated</span><span class="o">:</span> <span class="s1">'2012-06-18T16:24:52.000Z'</span><span class="p">,</span>
+       <span class="nx">uploader</span><span class="o">:</span> <span class="s1">'damienwalters'</span><span class="p">,</span>
+       <span class="nx">category</span><span class="o">:</span> <span class="s1">'Sports'</span><span class="p">,</span>
+       <span class="nx">title</span><span class="o">:</span> <span class="s1">'Damien Walters 2010'</span><span class="p">,</span>
+       <span class="nx">description</span><span class="o">:</span> <span class="s1">'Training and new things [..]'</span><span class="p">,</span>
+       <span class="nx">tags</span><span class="o">:</span> 
+        <span class="p">[</span> <span class="s1">'Tumbling'</span><span class="p">,</span>
+          <span class="s1">'Gymnastics'</span><span class="p">,</span>
+          <span class="s1">'Freerunning'</span><span class="p">,</span>
+          <span class="s1">'Stunts'</span> <span class="p">],</span>
+       <span class="nx">thumbnail</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="nx">sqDefault</span><span class="o">:</span> <span class="s1">'http://i.ytimg.com/vi/cNvJy0zoXOY/default.jpg'</span><span class="p">,</span>
+          <span class="nx">hqDefault</span><span class="o">:</span> <span class="s1">'http://i.ytimg.com/vi/cNvJy0zoXOY/hqdefault.jpg'</span> <span class="p">},</span>
+       <span class="nx">player</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="k">default</span><span class="o">:</span> <span class="s1">'https://www.youtube.com/watch?v=cNvJy0zoXOY&amp;feature=youtube_gdata_player'</span><span class="p">,</span>
+          <span class="nx">mobile</span><span class="o">:</span> <span class="s1">'https://m.youtube.com/details?v=cNvJy0zoXOY'</span> <span class="p">},</span>
+       <span class="nx">content</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="s1">'1'</span><span class="o">:</span> <span class="s1">'rtsp://v7.cache7.c.youtube.com/CiILENy73wIaGQnmXOhMy8nbcBMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp'</span><span class="p">,</span>
+          <span class="s1">'5'</span><span class="o">:</span> <span class="s1">'https://www.youtube.com/v/cNvJy0zoXOY?version=3&amp;f=videos&amp;app=youtube_gdata'</span><span class="p">,</span>
+          <span class="s1">'6'</span><span class="o">:</span> <span class="s1">'rtsp://v3.cache5.c.youtube.com/CiILENy73wIaGQnmXOhMy8nbcBMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp'</span> <span class="p">},</span>
+       <span class="nx">duration</span><span class="o">:</span> <span class="mi">164</span><span class="p">,</span>
+       <span class="nx">aspectRatio</span><span class="o">:</span> <span class="s1">'widescreen'</span><span class="p">,</span>
+       <span class="nx">recorded</span><span class="o">:</span> <span class="s1">'2010-06-29'</span><span class="p">,</span>
+       <span class="nx">location</span><span class="o">:</span> <span class="s1">'england'</span><span class="p">,</span>
+       <span class="nx">rating</span><span class="o">:</span> <span class="mf">4.969567</span><span class="p">,</span>
+       <span class="nx">likeCount</span><span class="o">:</span> <span class="s1">'94337'</span><span class="p">,</span>
+       <span class="nx">ratingCount</span><span class="o">:</span> <span class="mi">95060</span><span class="p">,</span>
+       <span class="nx">viewCount</span><span class="o">:</span> <span class="mi">18004468</span><span class="p">,</span>
+       <span class="nx">favoriteCount</span><span class="o">:</span> <span class="mi">107421</span><span class="p">,</span>
+       <span class="nx">commentCount</span><span class="o">:</span> <span class="mi">31015</span><span class="p">,</span>
+       <span class="nx">accessControl</span><span class="o">:</span> 
+        <span class="p">{</span> <span class="nx">comment</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">commentVote</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">videoRespond</span><span class="o">:</span> <span class="s1">'moderated'</span><span class="p">,</span>
+          <span class="nx">rate</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">embed</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">list</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">autoPlay</span><span class="o">:</span> <span class="s1">'allowed'</span><span class="p">,</span>
+          <span class="nx">syndicate</span><span class="o">:</span> <span class="s1">'allowed'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">]</span> <span class="p">}</span>
+</pre>
+</div>
+
+
+<h2>feeds.related</h2>
+
+<p><strong>( videoid, [vars,] callback )</strong></p>
+
+<p>Get related videos for a video with <strong>videoid</strong>.</p>
+
+<h2>feeds.responses</h2>
+
+<p><strong>( videoid, [vars,] callback )</strong></p>
+
+<p>Get videos in response to <strong>videoid</strong>.</p>
+
+<h2>feeds.comments</h2>
+
+<p><strong>( videoid, [vars,] callback )</strong></p>
+
+<p>Get comments to a video. This is still in the original XML-to-JSON format as YouTube does not have JSON-C available for this feed. This may change in future (major) versions of this module.</p>
+
+<h2>feeds.standard</h2>
+
+<p><strong>( feed, [vars,] callback )</strong></p>
+
+<p>Get a standard feed, such as most viewed or top rated videos. Worldwide, local or by subject (or a combination).</p>
+
+<p><a href="https://developers.google.com/youtube/2.0/reference#Standard_feeds">API docs: Standard feeds</a></p>
+
+<p><strong>Example:</strong> most recent videos worldwide:</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">feeds</span><span class="p">.</span><span class="nx">standard</span><span class="p">(</span> <span class="s1">'most_recent'</span><span class="p">,</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<p><strong>Example:</strong> today's top-rated News videos in the Netherlands:</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">feeds</span><span class="p">.</span><span class="nx">standard</span><span class="p">(</span> <span class="s1">'NL/top_rated_News'</span><span class="p">,</span> <span class="p">{</span><span class="nx">time</span><span class="o">:</span> <span class="s1">'today'</span><span class="p">},</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>feeds.playlist</h2>
+
+<p><strong>( playlistid, [vars,] callback )</strong></p>
+
+<p>Get videos on a certain playlist.</p>
+
+<h1>Video</h1>
+
+<p>The <strong>video</strong> function provides shorthand methods for one specific video.</p>
+
+<h2>video</h2>
+
+<p><strong>( videoid [, callback] )</strong></p>
+
+<p>Same as video.details</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">video</span><span class="p">(</span> <span class="s1">'ern37eWDnT0'</span><span class="p">,</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>video.details</h2>
+
+<p><strong>( callback )</strong></p>
+
+<p>Get details for one video.</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">video</span><span class="p">(</span> <span class="s1">'ern37eWDnT0'</span> <span class="p">).</span><span class="nx">details</span><span class="p">(</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>video.related</h2>
+
+<p><strong>( [vars,] callback )</strong></p>
+
+<p>Get related videos, same as <strong>feeds.related</strong>.</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">video</span><span class="p">(</span> <span class="s1">'ern37eWDnT0'</span> <span class="p">).</span><span class="nx">related</span><span class="p">(</span> <span class="p">{</span><span class="s1">'max-results'</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>video.responses</h2>
+
+<p><strong>( [vars,] callback )</strong></p>
+
+<p>Get videos in response to one video, same as <strong>feeds.responses</strong>.</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">video</span><span class="p">(</span> <span class="s1">'ern37eWDnT0'</span> <span class="p">).</span><span class="nx">responses</span><span class="p">(</span> <span class="p">{</span><span class="s1">'max-results'</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>videos.comments</h2>
+
+<p><strong>( [vars,] callback )</strong></p>
+
+<p>Get comments to a video, same as <strong>feeds.comments</strong>.</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">video</span><span class="p">(</span> <span class="s1">'ern37eWDnT0'</span> <span class="p">).</span><span class="nx">comments</span><span class="p">(</span> <span class="p">{</span><span class="s1">'max-results'</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h1>User</h1>
+
+<p>Get (public) feed data for one specific user.</p>
+
+<h2>user</h2>
+
+<p><strong>( userid [, callback] )</strong></p>
+
+<p>Same as user.profile</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">user</span><span class="p">(</span> <span class="s1">'unknowntitle'</span><span class="p">,</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>user.profile</h2>
+
+<p><strong>( callback )</strong></p>
+
+<p>Get user profile, in old XML-to-JSON style.</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">user</span><span class="p">(</span> <span class="s1">'unknowntitle'</span> <span class="p">).</span><span class="nx">profile</span><span class="p">(</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>user.favorites</h2>
+
+<p><strong>( [vars,] callback )</strong></p>
+
+<p>Get the user's favorite videos. You can optionally filter the results like the other feeds.</p>
+
+<div class="highlight">
+<pre><span class="nx">youtube</span><span class="p">.</span><span class="nx">user</span><span class="p">(</span> <span class="s1">'unknowntitle'</span> <span class="p">).</span><span class="nx">favorites</span><span class="p">(</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>user.playlists</h2>
+
+<p><strong>( [vars,] callback )</strong></p>
+
+<p>Get user playlists. Use <strong>feeds.playlist</strong> to get the videos.</p>
+
+<h1>Communication</h1>
+
+<h2>talk</h2>
+
+<p><strong>( path [, fields] callback [, oldJSON] )</strong></p>
+
+<p>Directly talk to the API. This function takes care of connecting and calling the callback only when valid JSON is returned.</p>
+
+<ul>
+<li>
+<strong>path</strong> - string - full method path without leading slash</li>
+<li>
+<strong>fields</strong> - object - GET parameters</li>
+<li>
+<strong>callback</strong> - function - callback function to receive results</li>
+<li>
+<strong>oldJSON</strong> - force old XML-to-JSON format instead of clean JSON-C</li>
+</ul><h1>License</h1>
+
+<p>This module is <strong>COPYLEFT</strong> meaning you can do with it anything you want except copyrighting it. If possible it would be nice to include the source URL along with the code: <a href="https://github.com/fvdm/nodejs-youtube">https://github.com/fvdm/nodejs-youtube</a></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/fvdm">fvdm</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-3580504-60");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
